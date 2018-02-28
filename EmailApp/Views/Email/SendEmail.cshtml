@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "SendEmail";
+}
+
+<style>
+    #wholepage {
+        margin-top:10px;
+    }
+</style>
+
+<h3>Write your email below!</h3>
+<p>To test the sanitizer and the cleanUpInput() method in EmailController, you can try adding a script tag in the textbox below!</p>
+<p>This method is able to clean up to protect against XSS attack and Sql Injection</p>
+<p>Examples that can be entered:</p>
+<p>' Or 1=1 --</p>
+<p>&lt;script&gt; alert("XSS") &lt;/script&gt;</p>
+<p>Default Input Validation in Visual Studio has been disabled, so that the appliation would not crash when XSS is detected</p>
+@using (Html.BeginForm("SendEmail", "Email", FormMethod.Post))
+{
+    <div id="wholepage">
+        <label>Recipient:</label>
+        <input type="email" id="recipient" name="recipient" pattern="{3,}" style="margin-top:10px"/>
+        <br>
+        <label>Subject:</label>
+        <input type="text" id="subject" name="subject" pattern="[\w ]+.{2,}" style="margin-top:10px"/>
+        <br>
+        <label>Body:</label>
+        <textarea rows="10" cols="50" id="body" name="body" style="margin-top:10px">
+        </textarea>
+        <br>
+        <label>CC:</label>
+        <input type="email" id="cc" name="cc" style="margin-top:10px"/>
+        <br>
+        <label>BCC:</label>
+        <input type="email" id="bcc" name="bcc" style="margin-top:10px"/>
+        <br>
+        <input type="submit" value="Send" style="margin-top:10px">
+    </div>
+}
+

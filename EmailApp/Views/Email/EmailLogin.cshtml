@@ -1,0 +1,21 @@
+﻿@model IEnumerable<EmailApp.Models.LoginModel>
+@{
+    ViewBag.Title = "EmailLogin";
+}
+<script>
+    function changename() {
+        document.getElementById("name").innerHTML = document.getElementById("email").value;
+    }
+</script>
+<h1>Hi,<span id="name"></span> Login to your email to begin!</h1>
+
+@using (Html.BeginForm("EmailLogin", "Email", FormMethod.Post))
+{
+    <label>Email:</label>
+    <input type="email" name="email" id="email" onchange="changename()">
+    <br>
+    <label>Password:</label>
+    <input type="password" name="password" id="password">
+    <br>
+    <input type="submit" value="Login >>">
+}

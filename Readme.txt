@@ -1,1 +1,0 @@
-This is just a proof of concept and should not be used as an actual platform for sending emails
